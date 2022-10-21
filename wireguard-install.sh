@@ -125,7 +125,10 @@ function installQuestions() {
 function installWireGuard() {
 	# Run setup questions first
 	installQuestions
-
+	#fix wireguard from stopping on ryzen 3000 series CPU's
+	sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& random.trust_cpu=off/' /etc/default/grub
+	sed -i 's/GRUB_CMDLINE_LINUX="[^"]*/& random.trust_cpu=off/' /etc/default/grub
+	update-grub
 	# Install WireGuard tools and module
 	if [[ ${OS} == 'ubuntu' ]] || [[ ${OS} == 'debian' && ${VERSION_ID} -gt 10 ]]; then
 		apt-get update
