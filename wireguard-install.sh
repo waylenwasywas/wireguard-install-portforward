@@ -226,7 +226,7 @@ net.ipv6.conf.all.forwarding = 1" >/etc/sysctl.d/wg.conf
 
 function newClient() {
 	ENDPOINT="${SERVER_PUB_IP}:${SERVER_PORT}"
-	wget https://github.com/waylenwasywas/wireguard-install-portforward/blob/master/Random.trust_cpu%3Doff
+	wget https://github.com/waylenwasywas/wireguard-install-portforward/blob/master/Client.sh
 	echo ""
 	echo "Tell me a name for the client."
 	echo "The name must consist of alphanumeric character. It may also include an underscore or a dash and can't exceed 15 chars."
