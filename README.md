@@ -29,7 +29,7 @@ Supported distributions:
 Download and execute the script. Answer the questions asked by the script and it will take care of the rest.
 
 ```bash
-wget https://github.com/waylenwasywas/wireguard-install-portforward/blob/master/wireguard-install.sh
+wget https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/waylenwasywas/wireguard-install-portforward/blob/master/wireguard-install.sh
 chmod +x wireguard-install.sh
 ./wireguard-install.sh
 ```
