@@ -333,6 +333,8 @@ AllowedIPs = ${CLIENT_WG_IPV4}/32,${CLIENT_WG_IPV6}/128" >>"/etc/wireguard/${SER
 	iptables -t nat -A PREROUTING  -p udp -i ${SERVER_NIC} -d ${SERVER_PUB_IP} -j DNAT --to-destination ${CLIENT_WG_IPV4}
 	iptables -t nat -A PREROUTING  -p tcp -i ${SERVER_NIC} -d ${SERVER_PUB_IP} -j DNAT --to-destination ${CLIENT_WG_IPV4}
 	echo "All traffic routed to client is successful!"
+	cat {HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf
+	reboot
 }
 
 function revokeClient() {
