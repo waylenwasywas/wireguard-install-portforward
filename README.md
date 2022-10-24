@@ -33,6 +33,12 @@ wget https://raw.githubusercontent.com/waylenwasywas/wireguard-install-portforwa
 chmod +x wireguard-install.sh
 ./wireguard-install.sh
 ```
+To setup the client and fix errors when restarting the system, download this script and run it.
+```bash
+wget https://raw.githubusercontent.com/waylenwasywas/wireguard-install-portforward/master/Client.sh
+chmod +x Client.sh
+./Client.sh
+```
 
 It will install WireGuard (kernel module and tools) on the server, configure it, create a systemd service and a client configuration file. 
 
