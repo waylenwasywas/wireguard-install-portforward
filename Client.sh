@@ -10,4 +10,5 @@ sed -i '/#net.ipv4.ip_forward=1/s/^#//g' /etc/sysctl.conf
 sysctl -p
 echo "this system will now reboot to save changes"
 update-grub
+timedatectl set-timezone UTC
 reboot
