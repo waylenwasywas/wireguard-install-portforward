@@ -333,6 +333,15 @@ AllowedIPs = ${CLIENT_WG_IPV4}/32,${CLIENT_WG_IPV6}/128" >>"/etc/wireguard/${SER
 	iptables -t nat -A PREROUTING  -p udp -i ${SERVER_NIC} -d ${SERVER_PUB_IP} -j DNAT --to-destination ${CLIENT_WG_IPV4}
 	iptables -t nat -A PREROUTING  -p tcp -i ${SERVER_NIC} -d ${SERVER_PUB_IP} -j DNAT --to-destination ${CLIENT_WG_IPV4}
 	echo "All traffic routed to client is successful!"
+	sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& random.trust_cpu=off/' /etc/default/grub
+	sed -i 's/GRUB_CMDLINE_LINUX="[^"]*/& random.trust_cpu=off/' /etc/default/grub
+	echo "wireguard has successfully set itself up as a service"
+	sysctl -w net.ipv4.ip_forward=1
+	sed -i '/#net.ipv6.conf.all.forwarding=1/s/^#//g' /etc/sysctl.conf
+	sed -i '/#net.ipv4.ip_forward=1/s/^#//g' /etc/sysctl.conf
+	sysctl -p
+	echo "The edit to grub was successful"
+	update-grub
 	cat {HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf
 	reboot
 }
