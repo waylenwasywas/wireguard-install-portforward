@@ -3,6 +3,8 @@ apt install wireguard -y
 apt install resolvconf -y
 sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& random.trust_cpu=off/' /etc/default/grub
 sed -i 's/GRUB_CMDLINE_LINUX="[^"]*/& random.trust_cpu=off/' /etc/default/grub
+sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="[^"]*/& nordrand/' /etc/default/grub
+sed -i 's/GRUB_CMDLINE_LINUX="[^"]*/& nordrand/' /etc/default/grub
 echo "wireguard has successfully set itself up as a service"
 sysctl -w net.ipv4.ip_forward=1
 sed -i '/#net.ipv6.conf.all.forwarding=1/s/^#//g' /etc/sysctl.conf
